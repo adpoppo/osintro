@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 2022_07_08_065447) do
     t.bigint "user_id", null: false
     t.string "title", null: false
     t.text "content", null: false
-    t.string "category_id", null: false
+    t.integer "category_id", null: false
     t.string "link"
     t.string "tag"
     t.datetime "created_at", precision: 6, null: false
