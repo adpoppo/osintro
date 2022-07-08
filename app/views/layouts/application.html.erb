@@ -10,6 +10,24 @@
   </head>
 
   <body>
+    <header class="header">
+      <div class="header__bar row">
+        <h1 class="grid-6"><a href="/">Osintro</a></h1>
+        <div class="user_nav grid-6">
+          <h2>ログアウト</h2>
+          <h2>投稿する</h2>
+        </div>
+        <div class="grid-6">
+          <h2>ログイン</h2>
+          <h2>新規登録</h2>
+        </div>
+      </div>
+    </header>
     <%= yield %>
+    <footer>
+      <p>
+        Copyright Osintro 2022.
+      </p>
+    </footer>
   </body>
 </html>
