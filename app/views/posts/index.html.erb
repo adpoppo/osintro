@@ -1,3 +1,21 @@
 <div class="contents">
-一覧
+  <% @posts.each do |post| %>
+    <li class="list">
+      <%#= link_to 投稿詳細画面 %>
+      <div class="post-img-content">
+        <%#= image_tag post.post_image %>
+      </div>
+      <div class="post-info">
+        <h3 class="post-title">
+          <%= post.title %>
+        </h3>
+        <h3 class="post-user">
+          <%= post.user.name %>
+        </h3>
+        <h3 class="post-category">
+          <%= post.category %>
+        </h3>
+      </div>
+    </li>
+  <% end %>
 </div>
