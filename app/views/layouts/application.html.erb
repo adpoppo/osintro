@@ -14,12 +14,12 @@
       <div class="header__bar row">
         <h1 class="grid-6"><a href="/">Osintro</a></h1>
         <div class="user_nav grid-6">
-          <h2>ログアウト</h2>
-          <h2>投稿する</h2>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <%= link_to "投稿する", new_post_path %>
         </div>
         <div class="grid-6">
-          <h2>ログイン</h2>
-          <h2>新規登録</h2>
+          <%= link_to "ログイン", new_user_session_path %>
+          <%= link_to "新規登録", new_user_registration_path %>
         </div>
       </div>
     </header>
