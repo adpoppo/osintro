@@ -1,0 +1,64 @@
+<div class="posts-contents">
+  <div class="posts-main">
+    <%#= form_with model: @post, local: true do |f|%>
+
+    <%# 投稿画像 %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        画像
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%#= f.file_field :hoge, id:"item-image" %>
+      </div>
+    </div>
+    <%# /投稿画像 %>
+
+  <%# タイトルと説明 %>
+    <div class="new-posts">
+      <div class="weight-bold-text">
+        タイトル
+        <span class="indispensable">必須</span>
+      </div>
+      <%#= f.text_area :hoge, class:"posts-text", id:"post-name", placeholder:"タイトル（必須 40文字まで)", maxlength:"40" %>
+      <div class="posts-explain">
+        <div class="weight-bold-text">
+          説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%#= f.text_area :hoge, class:"posts-text", id:"post-info", placeholder:"説明（必須 1,000文字まで）",rows:"7" ,maxlength:"1000" %>
+      </div>
+    </div>
+    <%# /タイトルと説明 %>
+
+    <%# 補足情報 %>
+    <div class="posts-detail">
+      <div class="weight-bold-text">
+        カテゴリー
+        <span class="indispensable">必須</span>
+      </div>
+      <%#= f.collection_select%>
+      <div class="weight-bold-text">
+        リンク
+      </div>
+      <%#= f.text_area :hoge %>
+      <div class="weight-bold-text">
+        タグ
+      </div>
+      <%#= f.text_area :hoge %>
+    </div>
+    <%# /補足情報 %>
+
+    <%# 投稿ボタン %>
+    <div class="post-btn-contents">
+      <%#= f.submit "投稿する" ,class:"post-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /投稿ボタン %>
+
+    <%# end %>
+  </div>
+</div>
