@@ -3,17 +3,17 @@
     <li class="list">
       <%#= link_to 投稿詳細画面 %>
       <div class="post-img-content">
-        <%#= image_tag post.post_image %>
+        <%= image_tag post.post_image %>
       </div>
       <div class="post-info">
         <h3 class="post-title">
           <%= post.title %>
         </h3>
         <h3 class="post-user">
-          <%= post.user.name %>
+          <%= post.user_id %>
         </h3>
         <h3 class="post-category">
-          <%= post.category %>
+          <%= post.category_id %>
         </h3>
       </div>
     </li>
