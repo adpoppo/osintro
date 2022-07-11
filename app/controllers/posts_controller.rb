@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :move_to_index, only: [:new, :create]
+
   def index
     @posts = Post.all
   end
@@ -24,6 +26,12 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:post_image, :title, :content, :category_id, :link, :tag).merge(user_id: current_user.id)
+  end
+
+  def move_to_index
+    unless user_signed_in?
+      redirect_to root_path
+    end
   end
 
 end
