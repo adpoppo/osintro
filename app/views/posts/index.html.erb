@@ -1,10 +1,11 @@
 <div class="contents">
   <% @posts.each do |post| %>
     <li class="list">
-      <%#= link_to 投稿詳細画面 %>
-      <div class="post-img-content">
-        <%= image_tag post.post_image %>
-      </div>
+      <%= link_to post_path(post.id) do %>
+        <div class="post-img-content">
+          <%= image_tag post.post_image %>
+        </div>
+      <% end %>
       <div class="post-info">
         <h3 class="post-title">
           <%= post.title %>
