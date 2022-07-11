@@ -3,7 +3,7 @@ app/assets/stylesheets/posts/new.css %>
 
 <div class="posts-contents">
   <div class="posts-main">
-    <%= form_with model: @post, url: posts_path, local: true do |f|%>
+    <%= form_with model: @post, url: post_path, local: true do |f|%>
 
     <%# 投稿画像 %>
     <div class="img-upload">
@@ -57,8 +57,8 @@ app/assets/stylesheets/posts/new.css %>
 
     <%# 更新ボタン %>
     <div class="post-btn-contents">
-      <%= f.submit "更新する" ,class:"post-btn" %>
-      <%=link_to 'もどる', root_path, class:"back-btn" %>
+      <%= f.submit "更新する", class:"post-btn" %>
+      <%=link_to 'もどる', post_path(@post.id), class:"back-btn" %>
     </div>
     <%# /更新ボタン %>
 
