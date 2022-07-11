@@ -1,0 +1,67 @@
+<%# 投稿概要 %>
+<div class="post-show">
+  <div class="post-box">
+    <h2 class="name">
+      <%= @post.title %>
+    </h2>
+
+    <div class="post-image-content">
+      <%= image_tag @post.post_image, alt: "投稿画像", class: "post-image" %>
+    </div>
+
+    <div class="post-explain-box">
+      <span><%= @post.content %></span>
+    </div>
+
+    <div class="post-detail">
+      <table class="detail-table">
+        <tbody>
+          <tr>
+            <th class="detail-key">投稿者</th>
+            <td class="detail-value"><%= @post.user_id %></td>
+          </tr>
+          <tr>
+            <th class="detail-key">カテゴリー</th>
+            <td class="detail-value"><%= @post.category_id %></td>
+          </tr>
+          <tr>
+            <th class="detail-key">リンク</th>
+            <td class="detail-value"><%= @post.link %></td>
+          </tr>
+          <tr>
+            <th class="detail-key">タグ</th>
+            <td class="detail-value"><%= @post.tag %></td>
+          </tr>
+          <tr>
+            <th class="detail-key">投稿日</th>
+            <td class="detail-value"><%= @post.created_at %></td>
+          </tr>
+          <tr>
+            <th class="detail-key">最終更新日</th>
+            <td class="detail-value"><%= @post.updated_at %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="option">
+      <div class="favorite-btn">
+        <span>お気に入り 0</span>
+      </div>
+      <div class="report-btn">
+        <span>不適切な投稿の通報</span>
+      </div>
+    </div>
+
+    <%# if @post.user.id == current_user.id %>
+      <%#= link_to "投稿の編集", edit_item_path(@item.id), method: :get, class: "item-red-btn" %>
+      <!-- p class="or-text">or</p>
+      <%#= link_to "削除", item_path(@item.id), method: :delete, class:"item-destroy" %>
+    <%# end %>
+  </div>
+</div>
+<%# /投稿概要 %>
+
+<%# コメント %>
+
+<%# /コメント %>
