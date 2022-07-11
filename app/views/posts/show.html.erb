@@ -18,11 +18,11 @@
         <tbody>
           <tr>
             <th class="detail-key">投稿者</th>
-            <td class="detail-value"><%= @post.user_id %></td>
+            <td class="detail-value"><%= @post.user.nickname %></td>
           </tr>
           <tr>
             <th class="detail-key">カテゴリー</th>
-            <td class="detail-value"><%= @post.category_id %></td>
+            <td class="detail-value"><%= @post.category.name %></td>
           </tr>
           <tr>
             <th class="detail-key">リンク</th>
