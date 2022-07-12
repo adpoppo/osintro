@@ -64,7 +64,7 @@
 
   <%# コメント %>
   <div class="container">
-    <% if user_signed_in? %>
+    <% if user_signed_in? && @post.user_id != current_user.id %>
       <%= form_with(model: [@post, @comment], local: true) do |form| %>
         <%= form.text_area :text, placeholder: "コメントを入力してください", rows: "2" %>
         <%= form.submit "コメントを送る" %>
