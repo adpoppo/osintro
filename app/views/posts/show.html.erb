@@ -79,6 +79,9 @@
           <strong><%= link_to comment.user.nickname, user_path(comment.user_id) %>：</strong>
           <%= comment.text %>
         </p>
+        <% if user_signed_in? && comment.user_id == current_user.id %>
+          <p><%= link_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete %></p>
+        <% end %>
       <% end %>
     </div>
   </div>
