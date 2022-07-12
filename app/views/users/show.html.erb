@@ -3,7 +3,7 @@
   <h3><%= @user.profile %></h3>
   <ul class="user-btn">
     <% if user_signed_in? && current_user.id == @user.id %>
-      <li><%= link_to "プロフィールを編集する", "#" %></li>
+      <li><%= link_to "プロフィールを編集する", edit_user_registration_path(@user.id) %></li>
     <% end %>
   </ul>
 </div>
