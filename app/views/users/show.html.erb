@@ -15,10 +15,10 @@
     <% end %>
   <% end %>
   <div class="follow-index">
-    <%= link_to "#" do %>
+    <%= link_to follows_user_path(@user) do %>
       <h6>フォロー<%= @following_users.count %></h6>
     <% end %>
-    <%= link_to "#" do %>
+    <%= link_to followers_user_path(@user) do %>
       <h6>フォロワー<%= @follower_users.count %></h6>
     <% end %>
   </div>
