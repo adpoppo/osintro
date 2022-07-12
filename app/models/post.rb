@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :user
   belongs_to :category
+  has_many :comments
   has_one_attached :post_image
 
   with_options presence: true do
