@@ -10,7 +10,10 @@ class Post < ApplicationRecord
     validates :title, length: {maximum: 40}
     validates :content, length: {maximum: 1000}
   end
-
   validates :category_id, numericality: { other_than: 0, message: "can't be blank" }
+
+  def favorited_by?(user)
+    favorites.where(user_id: user.id).exists?
+  end
 
 end
