@@ -19,4 +19,9 @@ class UsersController < ApplicationController
     @users = user.follower_user.page(params[:page]).per(3).reverse_order
   end
 
+  def favorites
+    @user = User.find(params[:id])
+    @fav_posts = @user.fav_posts.page(params[:page]).per(5).reverse_order
+  end
+
 end

@@ -35,4 +35,11 @@
     <% end %>
   </div>
   <%= paginate @posts %>
+
+  <div class="favorite-index">
+    <%= link_to favorites_user_path(@user) do %>
+      <h6>いいねした記事一覧<%= @favorite_list.count %></h6>
+    <% end %>
+  </div>
+
 </div>

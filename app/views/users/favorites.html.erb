@@ -1,0 +1,7 @@
+<div class="favorite-index">
+  <% @fav_posts.each do |post| %>
+    <%= link_to post.title, post_path(post) %>
+    <%= image_tag post.post_image %>
+  <% end %>
+  <%= paginate @fav_posts %>
+</div>
