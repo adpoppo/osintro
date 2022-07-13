@@ -1,22 +1,25 @@
 <div class="contents">
   <% @posts.each do |post| %>
-    <li class="list">
-      <%= link_to post_path(post.id) do %>
-        <div class="post-img-content">
-          <%= image_tag post.post_image %>
+    <ul>
+      <li class="list">
+        <%= link_to post_path(post.id) do %>
+          <div class="post-img-content">
+            <%= image_tag post.post_image %>
+          </div>
+        <% end %>
+        <div class="post-info">
+          <h3 class="post-title">
+            <%= post.title %>
+          </h3>
+          <h3 class="post-user">
+            <%= post.user.nickname %>
+          </h3>
+          <h3 class="post-category">
+            <%= post.category.name %>
+          </h3>
         </div>
-      <% end %>
-      <div class="post-info">
-        <h3 class="post-title">
-          <%= post.title %>
-        </h3>
-        <h3 class="post-user">
-          <%= post.user.nickname %>
-        </h3>
-        <h3 class="post-category">
-          <%= post.category.name %>
-        </h3>
-      </div>
-    </li>
+      </li>
+    </ul>
   <% end %>
+  <%= paginate @posts %>
 </div>
