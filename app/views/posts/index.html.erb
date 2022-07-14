@@ -1,25 +1,45 @@
-<div class="contents">
-  <% @posts.each do |post| %>
-    <ul>
-      <li class="list">
-        <%= link_to post_path(post.id) do %>
-          <div class="post-img-content">
-            <%= image_tag post.post_image %>
-          </div>
-        <% end %>
-        <div class="post-info">
-          <h3 class="post-title">
-            <%= post.title %>
-          </h3>
-          <h3 class="post-user">
-            <%= post.user.nickname %>
-          </h3>
-          <h3 class="post-category">
-            <%= post.category.name %>
-          </h3>
-        </div>
-      </li>
+<%= render "shared/header" %>
+
+<div class="post-index wrapper">
+  <!-- メインエリア -->
+  <article>
+    <div class="post-contents">
+      <% @posts.each do |post| %>
+        <ul>
+          <li class="post-list">
+            <%= link_to post_path(post.id) do %>
+              <div class="post-img-content">
+                <%= image_tag post.post_image, class: "post-img" %>
+              </div>
+            <% end %>
+            <div class="post-info">
+              <h3 class="post-title">
+                <%= post.title %>
+              </h3>
+              <h3 class="post-user">
+                <%= post.user.nickname %>
+              </h3>
+              <h3 class="post-category">
+                <%= post.category.name %>
+              </h3>
+            </div>
+          </li>
+        </ul>
+      <% end %>
+      <%= paginate @posts %>
+    </div>
+  </article>
+
+  <!-- サイドバー -->
+  <aside>
+    <h3 class="sub-title">カテゴリー</h3>
+    <ul class="sub-menu">
+      <li>ゲーム</li>
+      <li>ミュージック</li>
+      <li>映画</li>
+      <li>その他</li>
     </ul>
-  <% end %>
-  <%= paginate @posts %>
+  </aside>
 </div>
+
+<%= render "shared/footer" %>
