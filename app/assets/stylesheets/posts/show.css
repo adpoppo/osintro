@@ -1,0 +1,33 @@
+.post-show {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* メインエリア */
+article {
+  width: 74%;
+  margin: 20px;
+}
+.post-show-img {
+  width: 900px;
+  height: 600px;
+  object-fit: cover;
+}
+.post-explain-box {
+  border: solid 1px black;
+  margin: 30px 0;
+}
+.detail-table {
+  border-collapse: collapse;
+  border: solid 2px black;
+  width: 90%;
+}
+.detail-table th, td {
+  border: dashed 1px blue;
+}
+.detail-key {
+  padding: 20px;
+}
+.detail-value {
+  padding: 20px;
+}
