@@ -11,18 +11,10 @@
               <div class="post-img-content">
                 <%= image_tag post.post_image, class: "post-img" %>
               </div>
+              <h1 class="post-title"><%= post.title %></h1>
+              <h3 class="post-info">投稿したユーザー：<%= post.user.nickname %></h3>
+              <h3 class="post-info">カテゴリー：<%= post.category.name %></h3>
             <% end %>
-            <div class="post-info">
-              <h3 class="post-title">
-                <%= post.title %>
-              </h3>
-              <h3 class="post-user">
-                <%= post.user.nickname %>
-              </h3>
-              <h3 class="post-category">
-                <%= post.category.name %>
-              </h3>
-            </div>
           </li>
         </ul>
       <% end %>
