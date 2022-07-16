@@ -19,6 +19,7 @@
 }
 .post-image-content {
   width: 100%;
+  height: auto;
 }
 .post-show-img {
   width: 100%;
@@ -26,7 +27,7 @@
   object-fit: cover;
 }
 .post-explain-box {
-  margin: 30px 0;
+  margin: 10px 0;
 }
 .favorite-btn {
   text-decoration: none;
@@ -34,6 +35,16 @@
 }
 .non-favorite-btn {
   text-decoration: none;
+}
+.edit-delete {
+  display: flex;
+  justify-content: space-between;
+}
+.post-edit-btn {
+  margin: 0 50px;
+}
+.post-destroy-btn {
+  margin: 0 50px;
 }
 
 /* コメントエリア */

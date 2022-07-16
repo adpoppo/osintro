@@ -42,17 +42,14 @@
           <% end %>
           <%= @post.favorites.count %>
         </div>
-
-        <div class="report-btn">
-          <span>不適切な投稿の通報</span>
-        </div>
       </div>
 
-      <% if user_signed_in? && @post.user_id == current_user.id %>
-        <%= link_to "投稿の編集", edit_post_path(@post.id), method: :get, class: "post-edit-btn" %>
-        <p class="or-text">or</p>
-        <%= link_to "削除", post_path(@post.id), method: :delete, class:"post-destroy" %>
-      <% end %>
+      <div class="edit-delete">
+        <% if user_signed_in? && @post.user_id == current_user.id %>
+          <%= link_to "投稿の編集", edit_post_path(@post.id), method: :get, class: "post-edit-btn" %>
+          <%= link_to "削除", post_path(@post.id), method: :delete, class:"post-destroy-btn" %>
+        <% end %>
+      </div>
     </div>
     <%# /投稿概要 %>
 
@@ -78,6 +75,9 @@
       </div>
     </div>
     <%# /コメント %>
+    <div class="report-btn">
+      <span>不適切な投稿の通報</span>
+    </div>
 
   </div>
 

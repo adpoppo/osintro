@@ -17,11 +17,14 @@ article {
 }
 .post-list {
   width: 100%;
-  height: 50vh;
+  height: 38vh;
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
   list-style: none;
+}
+.post-card {
+  text-decoration: none;
 }
 .post-img {
   border-radius: 5px 5px 0 0;
@@ -29,12 +32,12 @@ article {
   height: auto;
 }
 .post-title {
-  font-size: 2rem;
+  font-size: 1rem;
   margin: 10px 0;
   text-align: center;
 }
 .post-info {
-  margin-top: 0;
+  margin: 0 10px;
   padding-bottom: 0;
 }
 

@@ -7,13 +7,11 @@
       <% @posts.each do |post| %>
         <ul>
           <li class="post-list">
-            <%= link_to post_path(post.id) do %>
-              <div class="post-img-content">
-                <%= image_tag post.post_image, class: "post-img" %>
-              </div>
-              <h1 class="post-title"><%= post.title %></h1>
-              <h3 class="post-info">投稿したユーザー：<%= post.user.nickname %></h3>
-              <h3 class="post-info">カテゴリー：<%= post.category.name %></h3>
+            <%= link_to post_path(post.id),class: "post-card" do %>
+              <%= image_tag post.post_image, class: "post-img" %>
+              <h3 class="post-title"><%= post.title %></h3>
+              <p class="post-info">投稿したユーザー<br><%= post.user.nickname %></p>
+              <p class="post-info">カテゴリー<br><%= post.category.name %></p>
             <% end %>
           </li>
         </ul>

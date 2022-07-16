@@ -1,0 +1,8 @@
+.second-header {
+  max-width: 100%;
+  margin: 0 auto 50px;
+  padding: 30px;
+  border-bottom: solid 2px black;
+  display: flex;
+  justify-content: center;
+}
