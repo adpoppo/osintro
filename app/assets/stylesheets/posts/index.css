@@ -1,24 +1,30 @@
 .post-index {
   display: flex;
   justify-content: space-between;
+  padding: 0 150px;
 }
 
 /* メインエリア */
 article {
-  width: 74%;
+  width: 65%;
+  border-right: solid 1px black;
+  padding-right: 5%;
 }
 .post-contents {
   display: grid;
   gap: 20px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, 1fr);
 }
 .post-list {
-  width: 350px;
-  height: 400px;
+  width: 100%;
+  height: 38vh;
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 2px 5px #ccc;
   list-style: none;
+}
+.post-card {
+  text-decoration: none;
 }
 .post-img {
   border-radius: 5px 5px 0 0;
@@ -26,18 +32,18 @@ article {
   height: auto;
 }
 .post-title {
-  font-size: 2rem;
+  font-size: 1rem;
   margin: 10px 0;
   text-align: center;
 }
 .post-info {
-  margin-top: 0;
+  margin: 0 10px;
   padding-bottom: 0;
 }
 
 /* サイドバー */
 aside {
-  width: 22%;
+  width: 25%;
 }
 .sub-title {
   font-size: 1.375rem;

@@ -1,33 +1,61 @@
 .post-show {
   display: flex;
   justify-content: space-between;
+  padding: 0 150px;
+}
+.post-show-main {
+  width: 65%;
+  border-right: solid 1px black;
+  padding-right: 5%;
 }
 
-/* メインエリア */
-article {
-  width: 74%;
-  margin: 20px;
+/* 投稿詳細エリア */
+.post-box {
+  width: 100%;
+}
+.user-date {
+  display: flex;
+  justify-content: space-between;
+}
+.post-image-content {
+  width: 100%;
+  height: auto;
 }
 .post-show-img {
-  width: 900px;
-  height: 600px;
+  width: 100%;
+  height: auto;
   object-fit: cover;
 }
 .post-explain-box {
-  border: solid 1px black;
-  margin: 30px 0;
+  margin: 10px 0;
 }
-.detail-table {
-  border-collapse: collapse;
-  border: solid 2px black;
-  width: 90%;
+.favorite-btn {
+  text-decoration: none;
+  color: #ed1c24;
 }
-.detail-table th, td {
-  border: dashed 1px blue;
+.non-favorite-btn {
+  text-decoration: none;
 }
-.detail-key {
-  padding: 20px;
+.edit-delete {
+  display: flex;
+  justify-content: space-between;
 }
-.detail-value {
-  padding: 20px;
+.post-edit-btn {
+  margin: 0 50px;
+}
+.post-destroy-btn {
+  margin: 0 50px;
+}
+
+/* コメントエリア */
+.comment-box {
+  width: 80%;
+  padding: 0 30px;
+}
+.comment-form {
+  width: 100%;
+  height: auto;
+}
+.comment-btn {
+  width: 100%;
 }
