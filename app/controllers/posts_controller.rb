@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :move_to_index, only: [:edit, :destroy]
 
   def index
-    @posts = Post.all.page(params[:page]).reverse_order.per(8)
+    @posts = Post.all.page(params[:page]).reverse_order.per(9)
   end
 
   def new

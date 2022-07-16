@@ -5,10 +5,17 @@
   <div class="post-show-main">
 
     <%# 投稿概要 %>
-    <article class="post-box">
-      <h2 class="name">
-        <%= @post.title %>
-      </h2>
+    <div class="post-box">
+      <div class="user-date">
+        投稿者：<%= @post.user.nickname %>
+        <div class="date-category-tag">
+          <%= @post.created_at.strftime('%Y/%m/%d') %>/更新：<%= @post.updated_at.strftime('%Y/%m/%d') %>
+          <%= @post.category.name %>/<%= @post.tag %>
+        </div>
+      </div>
+        <h2 class="post-show-title">
+          <%= @post.title %>
+        </h2>
 
       <div class="post-image-content">
         <%= image_tag @post.post_image, alt: "投稿画像", class: "post-show-img" %>
@@ -18,47 +25,18 @@
         <span><%= @post.content %></span>
       </div>
 
-      <div class="post-detail">
-        <table class="detail-table">
-          <tbody>
-            <tr>
-              <th class="detail-key">投稿者</th>
-              <td class="detail-value"><%= @post.user.nickname %></td>
-            </tr>
-            <tr>
-              <th class="detail-key">カテゴリー</th>
-              <td class="detail-value"><%= @post.category.name %></td>
-            </tr>
-            <tr>
-              <th class="detail-key">リンク</th>
-              <td class="detail-value"><%= @post.link %></td>
-            </tr>
-            <tr>
-              <th class="detail-key">タグ</th>
-              <td class="detail-value"><%= @post.tag %></td>
-            </tr>
-            <tr>
-              <th class="detail-key">投稿日</th>
-              <td class="detail-value"><%= @post.created_at %></td>
-            </tr>
-            <tr>
-              <th class="detail-key">最終更新日</th>
-              <td class="detail-value"><%= @post.updated_at %></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+        <div class="link-cord"><%= @post.link %></div>
 
       <div class="option">
-        <div class="favorite-btn">
+        <div class="favorite">
           <% if user_signed_in? && @post.user_id != current_user.id %>
             <% if @post.favorited_by?(current_user)  %>
-              <%= link_to post_favorites_path(@post), method: :delete do %>
-                <span>good</span>
+              <%= link_to post_favorites_path(@post), method: :delete, class: "favorite-btn" do %>
+                <span>&#9829;</span>
               <% end %>
             <% else %>
-              <%= link_to post_favorites_path(@post), method: :post do %>
-                <span>no good</span>
+              <%= link_to post_favorites_path(@post), method: :post, class: "non-favorite-btn" do %>
+                <span>&#9825;</span>
               <% end %>
             <% end %>
           <% end %>
@@ -75,29 +53,27 @@
         <p class="or-text">or</p>
         <%= link_to "削除", post_path(@post.id), method: :delete, class:"post-destroy" %>
       <% end %>
-    </article>
+    </div>
     <%# /投稿概要 %>
 
     <%# コメント %>
-    <div class="container">
+    <div class="comment-box">
       <% if user_signed_in? && @post.user_id != current_user.id %>
         <%= form_with(model: [@post, @comment], local: true) do |form| %>
-          <%= form.text_area :text, placeholder: "コメントを入力してください", rows: "2" %>
-          <%= form.submit "コメントを送る" %>
+          <%= form.text_area :text, placeholder: "コメントを入力してください", rows: "4", class: "comment-form" %><br>
+          <%= form.submit "コメントを送る", class: "comment-btn" %>
         <% end %>
       <% else %>
         <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
       <% end %>
+      <h4>＜コメント一覧＞</h4>
       <div class="comments">
-        <h4>＜コメント一覧＞</h4>
         <% @comments.each do |comment| %>
-          <p>
             <strong><%= link_to comment.user.nickname, user_path(comment.user_id) %>：</strong>
             <%= comment.text %>
-          </p>
           <% if user_signed_in? && comment.user_id == current_user.id %>
-            <p><%= link_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete %></p>
-          <% end %>
+            <%= link_to "削除", post_comment_path(comment.post.id, comment.id), method: :delete %>
+          <% end %><br>
         <% end %>
       </div>
     </div>
@@ -106,6 +82,15 @@
   </div>
 
   <%# サイドバー %>
+  <aside>
+    <h3 class="sub-title">カテゴリー</h3>
+    <ul class="sub-menu">
+      <li>ゲーム</li>
+      <li>ミュージック</li>
+      <li>映画</li>
+      <li>その他</li>
+    </ul>
+  </aside>
   <%# /サイドバー %>
 
 </div>
