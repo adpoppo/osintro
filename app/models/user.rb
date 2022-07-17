@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :follower_user, through: :followed, source: :following
   has_many :favorites
   has_many :fav_posts, through: :favorites, source: :post
+  has_one_attached :avatar_image
 
   def follow(user_id)
     following.create(followed_id: user_id)
@@ -25,8 +26,9 @@ class User < ApplicationRecord
     following_user.include?(user)
   end
 
-  validates :nickname, presence: true
+  validates :nickname, presence: true, length: { maximum: 20 }
   validates :password,
   format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: 'is invalid. Include both letters and numbers.' }
+  validates :profile, length: { maximum: 160 }
 
 end

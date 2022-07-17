@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @following_users = @user.following_user
     @follower_users = @user.follower_user
     @posts = @user.posts.page(params[:page]).reverse_order.per(3)
-    favorites = Favorite.where(user_id: current_user.id).pluck(:post_id)
+    favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @favorite_list = Post.find(favorites)
   end
 
