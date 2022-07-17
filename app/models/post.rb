@@ -7,6 +7,7 @@ class Post < ApplicationRecord
   has_one_attached :post_image
 
   with_options presence: true do
+    validates :post_image
     validates :title, length: {maximum: 40}
     validates :content, length: {maximum: 1000}
   end
