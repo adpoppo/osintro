@@ -54,6 +54,11 @@ RSpec.describe Post, type: :model do
         @post.valid?
         expect(@post.errors.full_messages).to include("Category can't be blank")
       end
+      it 'userが紐づいていないと登録できない' do
+        @post.user = nil
+        @post.valid?
+        expect(@post.errors.full_messages).to include('User must exist')
+      end
     end
   end
 end
