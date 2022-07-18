@@ -3,16 +3,15 @@ class FavoritesController < ApplicationController
   before_action :authenticate_user!
 
   def create
+    binding.pry
     if @post.user_id != current_user.id
       @favorite = Favorite.create(user_id: current_user.id, post_id: @post.id)
-      redirect_to post_path(@post)
     end
   end
 
   def destroy
     @favorite = Favorite.find_by(user_id: current_user.id, post_id: @post.id)
     @favorite.destroy
-    redirect_to post_path(@post)
   end
 
   private
