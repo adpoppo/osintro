@@ -9,6 +9,7 @@ require("@rails/activestorage").start()
 require("channels")
 require('jquery')
 require('../preview')
+require('../avatar')
 require('../follow_create')
 require('../follow_destroy')
 

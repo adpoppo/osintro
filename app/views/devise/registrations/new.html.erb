@@ -2,12 +2,13 @@
 
 <h2>Sign up</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "new-user"}) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
+    <div id="user-avatar"></div>
     <%= f.label :avatar_image %><br />
-    <%= f.file_field :avatar_image %>
+    <%= f.file_field :avatar_image, id: 'avatar-image' %>
   </div>
 
   <div class="field">
