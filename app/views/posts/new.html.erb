@@ -1,6 +1,6 @@
 <div class="posts-contents">
   <div class="posts-main">
-    <%= form_with model: @post, url: posts_path, local: true do |f|%>
+    <%= form_with model: @post, url: posts_path, id: "new-post",local: true do |f|%>
 
     <%# 投稿画像 %>
     <div class="img-upload">
@@ -8,6 +8,7 @@
         画像
         <span class="indispensable">必須</span>
       </div>
+      <div id="post-previews"></div>
       <div class="click-upload">
         <p>
           クリックしてファイルをアップロード
