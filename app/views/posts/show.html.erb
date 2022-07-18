@@ -7,7 +7,7 @@
     <%# 投稿概要 %>
     <div class="post-box">
       <div class="user-date">
-        投稿者：<%= @post.user.nickname %>
+        投稿者：<%= link_to @post.user.nickname, user_path(@post.user_id) %>
         <div class="date-category-tag">
           <%= @post.created_at.strftime('%Y/%m/%d') %>/更新：<%= @post.updated_at.strftime('%Y/%m/%d') %>
           <%= @post.category.name %>/<%= @post.tag %>
