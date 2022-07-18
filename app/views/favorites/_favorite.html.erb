@@ -1,0 +1,14 @@
+<div class="favorite">
+  <% if user_signed_in? && post.user_id != current_user.id %>
+    <% if post.favorited_by?(current_user)  %>
+      <%= link_to post_favorites_path(post), method: :delete, remote: true, class: "favorite-btn" do %>
+        <span>&#9829;</span>
+      <% end %>
+    <% else %>
+      <%= link_to post_favorites_path(post), method: :post, remote: true, class: "non-favorite-btn" do %>
+        <span>&#9825;</span>
+      <% end %>
+    <% end %>
+  <% end %>
+  <%= post.favorites.count %>
+</div>
