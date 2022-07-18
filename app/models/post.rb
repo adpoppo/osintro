@@ -4,10 +4,10 @@ class Post < ApplicationRecord
   belongs_to :category
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_one_attached :post_image
+  has_many_attached :post_images
 
   with_options presence: true do
-    validates :post_image
+    validates :post_images, length: { minimum: 1, maximum: 4, message: "は1枚以上4枚以下にしてください" }
     validates :title, length: {maximum: 40}
     validates :content, length: {maximum: 1000}
   end
