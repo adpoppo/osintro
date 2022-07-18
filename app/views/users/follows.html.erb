@@ -1,3 +1,5 @@
+<%= render 'shared/header' %>
+
 <div class="follows-index">
   <% @users.each do |user| %>
     <%= link_to user.nickname, user_path(user) %>
