@@ -21,10 +21,19 @@
   width: 100%;
   height: auto;
 }
-.post-show-img {
+.show-main-img {
   width: 100%;
   height: auto;
   object-fit: cover;
+}
+.show-other-imgs {
+  display: flex;
+}
+.image-delete-button {
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+  margin-bottom: 5px;
 }
 .post-explain-box {
   margin: 10px 0;
