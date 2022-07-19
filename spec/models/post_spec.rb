@@ -8,7 +8,7 @@ RSpec.describe Post, type: :model do
 
   describe '新規投稿' do
     context '新規投稿できる場合' do
-      it 'post_image、title、content、categoryが存在すれば登録できる' do
+      it 'post_images、title、content、categoryが存在すれば登録できる' do
         expect(@post).to be_valid
       end
       it 'linkが空でも登録できる' do
@@ -25,9 +25,9 @@ RSpec.describe Post, type: :model do
 
     context '新規投稿できない場合' do
       it 'post_imageが空では登録出来ない' do
-        @post.post_image = nil
+        @post.post_images = nil
         @post.valid?
-        expect(@post.errors.full_messages).to include("Post image can't be blank")
+        expect(@post.errors.full_messages).to include("Post images は1枚〜4枚添付してください")
       end
       it 'titleが空では登録出来ない' do
         @post.title = ''
@@ -52,7 +52,7 @@ RSpec.describe Post, type: :model do
       it 'category_idが0では登録出来ない' do
         @post.category_id = 0
         @post.valid?
-        expect(@post.errors.full_messages).to include("Category can't be blank")
+        expect(@post.errors.full_messages).to include("Category を入力してください")
       end
       it 'userが紐づいていないと登録できない' do
         @post.user = nil
