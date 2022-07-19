@@ -1,20 +1,30 @@
-.registration-main {
+.user-info-main {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
 
-.registration-message {
+.user-info-message {
   width: 90%;
   text-align: center;
+  padding-bottom: 10px;
   border-bottom: 1px solid black;
 }
 
 /* 入力フォーム */
 
 .field {
-  margin: 10px;
+  margin: 30px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: dotted 1px gray;
+}
+
+.required-profile {
+  color: red;
+  font-size: 80%;
+  margin-left: 5px;
 }
 
 .avatar-image {
@@ -26,6 +36,12 @@
 
 .form-area {
   width: 450px;
+  margin: 0 0  10px 30px;
+}
+
+.password-area {
+  display: flex;
+  flex-direction: column;
 }
 
 .actions {

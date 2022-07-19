@@ -1,44 +1,39 @@
 <%= render "shared/second_header" %>
 
-<div class="registration-main">
+<div class="user-info-main">
 
-  <h2 class="registration-message">新規アカウントを作成</h2>
+  <h2 class="user-info-message">新規アカウントを作成</h2>
 
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {id: "new-user"}) do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
+    <%= render 'shared/error_messages', model: f.object %>
 
     <div class="field">
+      <%= f.label :avatar_image, "プロフィール画像" %><span class="required-profile">必須</span><br />
+      <%= f.file_field :avatar_image, class: "form-area", id: 'avatar-image' %>
       <div id="user-avatar"></div>
-      <%= f.label :avatar_image %><br />
-      <%= f.file_field :avatar_image, id: 'avatar-image' %>
     </div>
 
     <div class="field">
-      <%= f.label :nickname %><em>（20文字まで）</em><br />
+      <%= f.label :nickname, "ニックネーム" %><span class="required-profile">必須</span><br />
       <%= f.text_field :nickname, class: "form-area", autofocus: true, autocomplete: "off", maxlength: "20", placeholder: "20文字以内" %>
     </div>
 
     <div class="field">
-      <%= f.label :email %><br />
+      <%= f.label :email %><span class="required-profile">必須</span><br />
       <%= f.email_field :email, class: "form-area", autocomplete: "email", placeholder: "例:osintro@example.jp" %>
     </div>
 
     <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, class: "form-area", autocomplete: "new-password", placeholder: "半角英数字6文字以上" %>
+      <%= f.label :password %><span class="required-profile">必須</span><br />
+      <div class="password-area">
+        <%= f.password_field :password, class: "form-area", autocomplete: "new-password", placeholder: "半角英数字6文字以上" %>
+        <%= f.password_field :password_confirmation, class: "form-area", autocomplete: "new-password", placeholder: "確認のためもう一度入力してください" %>
+      </div>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, class: "form-area", autocomplete: "new-password", placeholder: "確認のためもう一度入力してください" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :profile %><em>（160文字まで）</em><br />
-      <%= f.text_area :profile, class: "form-area", rows: "5", maxlength: "160", placeholder: "例：ゲームをすることとギターを弾くことが大好きです！よろしくお願いします！！" %>
+      <%= f.label :profile, "プロフィール" %><br />
+      <%= f.text_area :profile, class: "form-area", rows: "5", maxlength: "160", placeholder: "160文字以内" %>
     </div>
 
     <div class="actions">
