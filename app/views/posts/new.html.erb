@@ -1,6 +1,9 @@
+<%= render "shared/second_header" %>
+
 <div class="posts-contents">
   <div class="posts-main">
     <%= form_with model: @post, url: posts_path, id: "new-post",local: true do |f|%>
+    <%= render 'shared/error_messages', model: f.object %>
 
     <%# 投稿画像 %>
     <div class="img-upload">
