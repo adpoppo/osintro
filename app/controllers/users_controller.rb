@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
+  before_action :set_user
 
   def show
-    @user = User.find(params[:id])
     @following_users = @user.following_user
     @follower_users = @user.follower_user
     @posts = @user.posts.page(params[:page]).reverse_order.per(3)
@@ -10,18 +10,21 @@ class UsersController < ApplicationController
   end
 
   def follows
-    @user = User.find(params[:id])
     @users = @user.following_user.page(params[:page]).per(3).reverse_order
   end
   
   def followers
-    @user = User.find(params[:id])
     @users = @user.follower_user.page(params[:page]).per(3).reverse_order
   end
 
   def favorites
-    @user = User.find(params[:id])
     @fav_posts = @user.fav_posts.page(params[:page]).per(5).reverse_order
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
