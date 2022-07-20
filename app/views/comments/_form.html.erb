@@ -1,0 +1,8 @@
+<% if user_signed_in? && post.user_id != current_user.id %>
+  <%= form_with(model: [post, comment]) do |form| %>
+    <%= form.text_area :text, placeholder: "コメントを入力してください", rows: "4", class: "comment-form" %><br>
+    <%= form.submit "コメントを送る", class: "comment-btn" %>
+  <% end %>
+<% else %>
+  <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+<% end %>
