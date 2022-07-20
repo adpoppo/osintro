@@ -9,24 +9,21 @@
     <% end %>
   </ul>
   
-  <% if user_signed_in? && current_user.id != @user.id %>
-    <div id="follow-btn-<%= @user.id %>">
-      <% if current_user.following?(@user) %>
-        <%= render 'relationships/unfollow_form', user: @user %>
-      <% else %>
-        <%= render 'relationships/follow_form', user: @user %>
-      <% end %>
+  <%= render 'follow_form', user: @user %>
+
+  <% if user_signed_in? && current_user.id == @user.id %>
+    <div id="follow-count">
+        <%= link_to follows_user_path(@user) do %>
+          <h6>フォロー<%= @following_users.count %></h6>
+        <% end %>
+      </div>
+      <div id="follower-count">
+        <%= link_to followers_user_path(@user) do %>
+          <h6>フォロワー<%= @follower_users.count %></h6>
+        <% end %>
+      </div>
     </div>
   <% end %>
-
-  <div class="follow-index">
-    <%= link_to follows_user_path(@user) do %>
-      <h6>フォロー<%= @following_users.count %></h6>
-    <% end %>
-    <%= link_to followers_user_path(@user) do %>
-      <h6>フォロワー<%= @follower_users.count %></h6>
-    <% end %>
-  </div>
 
   <div class="user-posts">
     <p>投稿一覧</p>
