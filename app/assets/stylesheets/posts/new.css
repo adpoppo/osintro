@@ -52,6 +52,10 @@
 .image-delete-button {
   width: 60%;
   margin-top: 5px;
+  text-align: center;
+  border: solid 1px;
+  cursor: pointer;
+  margin-bottom: 5px;
 }
 
 /* 投稿内容入力 */

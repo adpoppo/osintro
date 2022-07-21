@@ -1,43 +1,57 @@
-.post-show {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 150px;
-}
 .post-show-main {
-  width: 65%;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.post-show-contents {
+  width: 50%;
   border-right: solid 1px black;
   padding-right: 5%;
 }
 
-/* 投稿詳細エリア */
-.post-box {
+/* 投稿概要 */
+.post-show-box {
   width: 100%;
 }
-.user-date {
+.post-show-header {
   display: flex;
   justify-content: space-between;
+  border-bottom: dotted 1px gray;
+  margin-bottom: 20px;
+}
+.avatar-thumbnail {
+  border-radius: 50%;
+  width: 4%;
+}
+.post-show-title {
+  padding: 0 auto;
 }
 .post-image-content {
   width: 100%;
-  height: auto;
 }
 .show-main-img {
   width: 100%;
   height: auto;
   object-fit: cover;
 }
-.show-other-imgs {
-  display: flex;
+.show-other-images {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
 }
-.image-delete-button {
-  text-align: center;
-  border: solid 1px;
-  cursor: pointer;
-  margin-bottom: 5px;
+.other-images {
+  width: 100%;
+  object-fit: cover;
 }
+
 .post-explain-box {
   margin: 10px 0;
 }
+.post-explain-text{
+  border: dotted 1px gray;
+}
+
 .favorite-btn {
   text-decoration: none;
   color: #ed1c24;
@@ -45,21 +59,18 @@
 .non-favorite-btn {
   text-decoration: none;
 }
-.edit-delete {
-  display: flex;
-  justify-content: space-between;
-}
-.post-edit-btn {
-  margin: 0 50px;
-}
-.post-destroy-btn {
-  margin: 0 50px;
+
+/* コメント */
+
+.comment-text {
+  border: dotted 1px gray;
 }
 
-/* コメントエリア */
 .comment-box {
   width: 80%;
   padding: 0 30px;
+  border-left: solid 1px gray;
+  border-right: solid 1px gray;
 }
 .comment-form {
   width: 100%;
@@ -67,4 +78,17 @@
 }
 .comment-btn {
   width: 100%;
+}
+
+/* 編集・削除ボタン */
+
+.edit-delete {
+  display: flex;
+  justify-content: center;
+}
+.post-edit-btn {
+  margin: 0 50px;
+}
+.post-destroy-btn {
+  margin: 0 50px;
 }
