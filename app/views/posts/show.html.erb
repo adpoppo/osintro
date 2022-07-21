@@ -1,80 +1,69 @@
 <%= render "shared/header" %>
 
-<div class="post-show">
+<div class="post-show-main">
 
-  <div class="post-show-main">
+  <div class="post-show-contents">
 
     <%# 投稿概要 %>
-    <div class="post-box">
-      <div class="user-date">
-        投稿者：<%= link_to @post.user.nickname, user_path(@post.user_id) %>
-        <div class="date-category-tag">
-          <%= @post.created_at.strftime('%Y/%m/%d') %>/更新：<%= @post.updated_at.strftime('%Y/%m/%d') %>
+    <div class="post-show-box">
+      <div class="post-show-header">
+        <div class="post-show-info">
+          投稿者 <%= image_tag @post.user.avatar_image, class: "avatar-thumbnail" %><%= link_to @post.user.nickname, user_path(@post.user_id) %><br>
+          投稿日 <%= @post.created_at.strftime('%Y/%m/%d') %> 更新日 <%= @post.updated_at.strftime('%Y/%m/%d') %><br>
+          <h2 class="post-show-title"><%= @post.title %></h2><br>
           <%= @post.category.name %>/<%= @post.tag %>
         </div>
+        <div id="favorite_btn_<%= @post.id %>">
+          <%= render 'favorites/favorite', post: @post %>
+        </div>
       </div>
-        <h2 class="post-show-title">
-          <%= @post.title %>
-        </h2>
+
 
       <div class="post-image-content">
         <%= image_tag @post.post_images[0], alt: "投稿画像", class: "show-main-img" %>
-        <div class="show-other-imgs">
+        <div class="show-other-images">
           <% @post.post_images[1..-1].each do |image| %>
-            <div class="show-other-img">
-              <%= image_tag image %>
+            <div class="show-other-image">
+              <%= image_tag image, class: "other-images" %>
             </div>
           <%end%>
         </div>
       </div>
 
       <div class="post-explain-box">
+        <h2 class="post-explain-text">ここがイチ推し！</h2>
         <span><%= @post.content %></span>
       </div>
 
-      <div class="link-cord"><%= @post.link %></div>
-
-      <div id="favorite_btn_<%= @post.id %>">
-        <%= render 'favorites/favorite', post: @post %>
-      </div>
-
-      <div class="edit-delete">
-        <% if user_signed_in? && @post.user_id == current_user.id %>
-          <%= link_to "投稿の編集", edit_post_path(@post.id), method: :get, class: "post-edit-btn" %>
-          <%= link_to "削除", post_path(@post.id), method: :delete, class:"post-destroy-btn" %>
-        <% end %>
+      <div class="link-cord">
+        関連リンク：<%= @post.link %>
       </div>
     </div>
     <%# /投稿概要 %>
 
     <%# コメント %>
+    <h3 class="comment-text">コメント一覧</h3>
     <div class="comment-box">
-      <div id="new-comment">
-        <%= render "comments/form", post: @post, comment: @comment %>
-      </div>
-      <h4>＜コメント一覧＞</h4>
       <div id="comments-area">
         <%= render "comments/post_comments", post: @post %>
       </div>
+      <div id="new-comment">
+        <%= render "comments/form", post: @post, comment: @comment %>
+      </div>
     </div>
     <%# /コメント %>
-    <div class="report-btn">
-      <span>不適切な投稿の通報</span>
-    </div>
 
+    <%# 編集・削除ボタン %>
+    <div class="edit-delete">
+      <% if user_signed_in? && @post.user_id == current_user.id %>
+        <%= link_to "投稿の編集", edit_post_path(@post.id), method: :get, class: "post-edit-btn" %>
+        <%= link_to "削除", post_path(@post.id), method: :delete, class:"post-destroy-btn" %>
+      <% end %>
+    </div>
+    <%# /編集・削除ボタン %>
   </div>
 
-  <%# サイドバー %>
-  <aside>
-    <h3 class="sub-title">カテゴリー</h3>
-    <ul class="sub-menu">
-      <li>ゲーム</li>
-      <li>ミュージック</li>
-      <li>映画</li>
-      <li>その他</li>
-    </ul>
-  </aside>
-  <%# /サイドバー %>
+  <%= render 'shared/side_bar' %>
 
 </div>
 
