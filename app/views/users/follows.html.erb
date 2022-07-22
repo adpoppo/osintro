@@ -1,8 +1,27 @@
 <%= render 'shared/header' %>
 
-<div class="follows-index">
-  <% @users.each do |user| %>
-    <%= link_to user.nickname, user_path(user) %>
-  <% end %>
-  <%= paginate @users %>
+<div class="follow-index-main">
+
+  <div class="follow-index-box">
+    <div class="follow-header">
+      <p class='follow-header-index'><strong><%= link_to "フォロー", follows_user_path(@user) %></strong></p>
+      <p class='follow-header-index'><%= link_to "フォロワー", followers_user_path(@user) %></p>
+    </div>
+    <% @users.each do |user| %>
+      <div class="follow-info">
+        <%= link_to image_tag(user.avatar_image, class: 'follow-avatar'), user_path(user) %>
+        <div class="follow-text">
+          <%= link_to user.nickname, user_path(user), class: 'follows-followers' %>
+          <%= user.profile %>
+        </div>
+        <div><%= link_to 'フォロー', '#', class: 'index-follow-btn' %></div>
+      </div>
+    <% end %>
+    <%= paginate @users %>
+  </div>
+
+  <%= render 'shared/side_bar' %>
+
 </div>
+
+<%= render 'shared/footer' %>
