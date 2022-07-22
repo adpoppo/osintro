@@ -1,5 +1,3 @@
-<%= link_to 'フォローする', user_relationships_path(user.id), method: :post, remote: true, class:"btn-sm btn-success" %>
-
 <div class="follow-index">
   <div id="follow-count">
     <%= link_to follows_user_path(user) do %>
@@ -12,3 +10,5 @@
     <% end %>
   </div>
 </div>
+
+<%= link_to 'フォロー', user_relationships_path(user.id), method: :post, remote: true, class:"btn-sm btn-success" %>

@@ -1,4 +1,3 @@
-<% if user_signed_in? && current_user.id != user.id %>
   <div id="follow-form">
     <% if current_user.following?(user) %>
       <%= render 'unfollow', user: @user %>
@@ -6,4 +5,3 @@
       <%= render 'follow', user: @user %>
     <% end %>
   </div>
-<% end %>

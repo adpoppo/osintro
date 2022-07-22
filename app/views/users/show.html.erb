@@ -1,47 +1,79 @@
 <%= render "shared/header" %>
 
-<div class="contents-row">
-  <h2><%= @user.nickname %></h2>
-  <h3><%= @user.profile %></h3>
-  <ul class="user-btn">
-    <% if user_signed_in? && current_user.id == @user.id %>
-      <li><%= link_to "プロフィールを編集する", edit_user_registration_path(@user.id) %></li>
-    <% end %>
-  </ul>
-  
-  <%= render 'follow_form', user: @user %>
+<div class="user-show-main">
 
-  <% if user_signed_in? && current_user.id == @user.id %>
-    <div id="follow-count">
-        <%= link_to follows_user_path(@user) do %>
-          <h6>フォロー<%= @following_users.count %></h6>
-        <% end %>
+  <%# ユーザー情報 %>
+  <div class="user-show-info">
+    <div class="user-info-box">
+      <%= image_tag @user.avatar_image, class: "user-show-avatar" %>
+      <div class="user-show-nickname">
+        <%= link_to @user.nickname, user_path(@user) %>
       </div>
-      <div id="follower-count">
-        <%= link_to followers_user_path(@user) do %>
-          <h6>フォロワー<%= @follower_users.count %></h6>
-        <% end %>
+      <div class="user-show-profile">
+        <%= @user.profile %>
       </div>
-    </div>
-  <% end %>
 
-  <div class="user-posts">
-    <p>投稿一覧</p>
-    <% @posts.each do |post| %>
-      <%= link_to post_path(post) do %>
-        <%= image_tag post.post_images[0], class: "post-img" %>
+      <% unless user_signed_in? && current_user.id != @user.id %>
+        <div class="follow-follower-count">
+          <div id="follow-count">
+            <%= link_to follows_user_path(@user), class: "follow-follower-number" do %>
+              <p><span><%= @following_users.count %></span> フォロー</p>
+            <% end %>
+          </div>
+          <div id="follower-count">
+            <%= link_to followers_user_path(@user), class: "follow-follower-number" do %>
+              <p><span><%= @follower_users.count %></span> フォロワー</p>
+            <% end %>
+          </div>
+        </div>
       <% end %>
-      <%= post.title %>
-      <%= @user.nickname %>
-      <%= post.category.name %>
-    <% end %>
-  </div>
-  <%= paginate @posts %>
+      
+      <% if user_signed_in? %>
+        <% if current_user.id == @user.id %>
+          <p><%= link_to "プロフィールを編集する", edit_user_registration_path(@user.id) %></p>
+        <% else %>
+          <%= render 'follow_form', user: @user %>
+        <% end %>
+      <% end %>
+    </div>
 
-  <div class="favorite-index">
-    <%= link_to favorites_user_path(@user) do %>
-      <h6>いいねした記事一覧<%= @favorite_list.count %></h6>
-    <% end %>
+    <div class="user-info-category">
+      フォロー中のカテゴリー
+    </div>
   </div>
+  <%# /ユーザー情報 %>
+
+  <%# ユーザーに関連する投稿 %>
+  <div class="user-show-posts">
+    <div class="user-best-box">
+      <%= @user.nickname %>さんのイチ推し！
+    </div>
+
+    <div class="user-all-posts">
+      <div class="all-posts-header">
+        <%= link_to "投稿一覧", "#" %>
+        <%= link_to "いいね", favorites_user_path(@user) %>
+        <%= @favorite_list.count %>
+        <%= "コメントした投稿" %>
+      </div>
+      <% @posts.each do |post| %>
+        <div class="user-each-posts">
+          <%= link_to image_tag(post.post_images[0], class: "each-posts-img"), post_path(post) %>
+          <div class="each-posts-info">
+            <%= link_to image_tag(post.user.avatar_image, class: "each-posts-avatar"), user_path(@user) %>
+            <%= link_to @user.nickname, user_path(@user) %><br>
+            <%= post.created_at.strftime('%Y/%m/%d') %><br>
+            <%= link_to post.title, post_path(post) %><br>
+            <%= post.category.name %><br>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <%= paginate @posts %>
+
+  </div>
+  <%# /ユーザーに関連する投稿 %>
 
 </div>
+
+<%= render 'shared/footer' %>
