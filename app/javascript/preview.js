@@ -27,9 +27,9 @@ document.addEventListener('DOMContentLoaded', function(){
   const buildNewFileField = () => {
     const newFileField = document.createElement('input');
     newFileField.setAttribute('type', 'file');
-    newFileField.setAttribute('name', 'post[post_images][]');
+    newFileField.setAttribute('name', 'post_form[post_images][]');
 
-    const lastFileField = document.querySelector('input[type="file"][name="post[post_images][]"]:last-child');
+    const lastFileField = document.querySelector('input[type="file"][name="post_form[post_images][]"]:last-child');
     const nextDataIndex = Number(lastFileField.getAttribute('data-index')) +1;
     newFileField.setAttribute('data-index', nextDataIndex);
 
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function(){
     if (imageCount < imageLimits) buildNewFileField();
   };
 
-  const fileField = document.querySelector('input[type="file"][name="post[post_images][]"]');
+  const fileField = document.querySelector('input[type="file"][name="post_form[post_images][]"]');
 
   fileField.addEventListener('change', changedFileField);
     

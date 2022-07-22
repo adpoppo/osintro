@@ -8,7 +8,6 @@ FactoryBot.define do
     content { Faker::Internet.password(max_length: 1000) }
     category_id { Faker::Number.between(from: 1, to: 10) }
     link { Faker::Internet.url }
-    tag { Faker::Name.name }
 
     association :user
   end

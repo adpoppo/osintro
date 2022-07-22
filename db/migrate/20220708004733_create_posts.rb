@@ -6,7 +6,6 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.text :content,        null: false
       t.integer :category_id, null: false
       t.string :link
-      t.string :tag
       t.timestamps
     end
   end

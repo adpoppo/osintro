@@ -8,12 +8,13 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post_form = PostForm.new
   end
 
   def create
-    @post = Post.new(post_params)
-    if @post.save
+    @post_form = PostForm.new(post_form_params)
+    if @post_form.valid?
+      @post_form.save
       redirect_to root_path
     else
       render :new
@@ -25,10 +26,16 @@ class PostsController < ApplicationController
   end
 
   def edit
+    post_attributes = @post.attributes
+    @post_form = PostForm.new(post_attributes)
+    @post_form.tag_name = @post.tags&.first&.tag_name
   end
 
   def update
-    if @post.update(post_params)
+    @post_form = PostForm.new(post_form_params)
+    @post_form.post_images ||= @post.post_images.blobs
+    if @post_form.valid?
+      @post_form.update(post_form_params, @post)
       redirect_to post_path(@post.id)
     else
       render :edit
@@ -42,8 +49,8 @@ class PostsController < ApplicationController
   
   private
 
-  def post_params
-    params.require(:post).permit({post_images: []}, :title, :content, :category_id, :link, :tag).merge(user_id: current_user.id)
+  def post_form_params
+    params.require(:post_form).permit(:tag_name, {post_images: []}, :title, :content, :category_id, :link).merge(user_id: current_user.id)
   end
 
   def set_post
