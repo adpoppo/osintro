@@ -1,0 +1,105 @@
+.user-show-main {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+/* ユーザー情報 */
+.user-show-info {
+  width: 25%;
+  margin-right: 5%;
+}
+
+.user-info-box {
+  width: 100%;
+  border: solid 1px gray;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-show-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.user-show-nickname {
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: solid 1px gray;
+  margin-bottom: 10px;
+}
+
+.user-show-profile {
+  width: 100%;
+}
+
+.follow-follower-count {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.follow-follower-number {
+  color: black;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.follow-follower-number span {
+  font-weight: bold;
+}
+
+.user-info-category {
+  width: 100%;
+  padding: 20px;
+  border: solid 1px gray;
+}
+
+/* ユーザーに関連する投稿 */
+.user-show-posts {
+  width: 40%;
+}
+
+.user-best-box {
+  width: 100%;
+  margin-bottom: 20px;
+  border: solid 1px gray;
+}
+
+.user-all-posts {
+  width: 100%;
+  border: solid 1px gray;
+}
+
+.all-posts-header {
+  border-bottom: solid 1px gray;
+}
+
+.user-each-posts {
+  display: flex;
+  border-bottom: dotted 1px gray;
+}
+
+.each-posts-img {
+  width: 200px;
+  height: 150px;
+  margin: 0 15px;
+  object-fit: cover;
+}
+
+.each-posts-info {
+  margin-right: 15px;
+}
+
+.each-posts-avatar {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  object-fit: cover;
+}
