@@ -1,0 +1,84 @@
+<%= render "shared/second_header" %>
+
+<div class="new-post-main">
+  <%= form_with model: @post_form, url: url, method: method, id: "new-post", local: true do |f|%>
+  <%= render 'shared/error_messages', model: f.object %>
+
+  <div class="new-post-contents">
+
+    <%# 投稿画像 %>
+    <div class="img-upload-box">
+      <div class="weight-bold-text">
+        画像（4枚まで）
+        <span class="indispensable">必須（1枚目はサムネイル画像になります）</span>
+      </div>
+      <div class="click-upload">
+        <%= f.file_field :post_images, name: 'post_form[post_images][]', data: {index: 0} %>
+      </div>
+      <div id="post-previews"></div>
+    </div>
+    <%# /投稿画像 %>
+
+    <%# 投稿内容入力 %>
+    <div class="new-post-box">
+      <div class="post-form-box">
+        <div class="post-form-text">
+          タイトル
+          <span class="indispensable">必須</span>
+        </div>
+        <div class="new-post-form">
+          <%= f.text_area :title, class:"post-form-area", placeholder:"（40文字まで)", maxlength:"40" %>
+        </div>
+      </div>
+
+      <div class="post-form-box">
+        <div class="post-form-text">
+          説明
+          <span class="indispensable">必須</span>
+        </div>
+        <div class="new-post-form">
+          <%= f.text_area :content, class:"post-form-area", id:"post-info", placeholder:"（1,000文字まで）",rows:"7" ,maxlength:"1000" %>
+        </div>
+      </div>
+
+      <div class="post-form-box">
+        <div class="post-form-text">
+          カテゴリー
+          <span class="indispensable">必須</span>
+        </div>
+        <div class="new-post-form">
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"post-form-area", id:"item-category"}) %>
+        </div>
+      </div>
+
+      <div class="post-form-box">
+        <div class="post-form-text">
+          リンク
+        </div>
+        <div class="new-post-form">
+          <%= f.text_area :link, class:"post-form-area" %>
+        </div>
+      </div>
+
+      <div class="post-form-box">
+        <div class="post-form-text">
+          タグ
+        </div>
+        <div class="new-post-form">
+          <%= f.text_field :tag_name, class: "post-form-area" %>
+          <div id="search-result"></div>
+        </div>
+      </div>
+      <%# /投稿内容入力 %>
+    </div>
+  </div>
+
+  <%# 投稿ボタン %>
+  <div class="new-post-btn">
+    <div><%= f.submit "推す！" ,class:"post-btn" %></div>
+    <div><%=link_to 'キャンセル', root_path, class:"back-btn" %></div>
+  </div>
+  <%# /投稿ボタン %>
+
+  <% end %>
+</div>

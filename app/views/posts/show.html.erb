@@ -11,7 +11,7 @@
           投稿者 <%= image_tag @post.user.avatar_image, class: "avatar-thumbnail" %><%= link_to @post.user.nickname, user_path(@post.user_id) %><br>
           投稿日 <%= @post.created_at.strftime('%Y/%m/%d') %> 更新日 <%= @post.updated_at.strftime('%Y/%m/%d') %><br>
           <h2 class="post-show-title"><%= @post.title %></h2><br>
-          <%= @post.category.name %>/<%= @post.tag %>
+          <%= @post.category.name %>/<%= @post.tags&.first&.tag_name %>
         </div>
         <div id="favorite_btn_<%= @post.id %>">
           <%= render 'favorites/favorite', post: @post %>

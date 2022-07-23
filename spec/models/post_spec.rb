@@ -16,11 +16,6 @@ RSpec.describe Post, type: :model do
         @post.valid?
         expect(@post).to be_valid
       end
-      it 'tagが空でも登録できる' do
-        @post.tag = ''
-        @post.valid?
-        expect(@post).to be_valid
-      end
     end
 
     context '新規投稿できない場合' do
