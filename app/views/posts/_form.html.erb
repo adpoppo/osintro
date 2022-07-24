@@ -47,7 +47,7 @@
           <span class="indispensable">必須</span>
         </div>
         <div class="new-post-form">
-          <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"post-form-area", id:"item-category"}) %>
+          <%= f.collection_select(:category_id, Category.all, :id, :name, {include_blank: "---"}, {class:"post-form-area", id:"item-category"}) %>
         </div>
       </div>
 

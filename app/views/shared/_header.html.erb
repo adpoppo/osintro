@@ -3,7 +3,8 @@
 
   <div class="search-bar-contents">
     <%= search_form_for Post.ransack(params[:q]), url: seek_posts_path, html: {id: 'search-form'} do |f|%>
-      <%= f.text_field :title_cont, placeholder: 'キーワードを入力', class: 'input-box' %>
+      <%= f.collection_select(:category_id_eq, Category.all, :id, :name, {include_blank: "---"}) %>
+      <%= f.text_field :title, placeholder: 'キーワードを入力', value: params[:q]&.dig(:title), class: 'input-box' %>
       <%= f.label :submit, class: 'search-button' do %>
         <input type="submit" value="検索" class="send">
         <%= f.submit :submit, id: "q_submit", style: "display: none;" %>
