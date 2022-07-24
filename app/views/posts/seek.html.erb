@@ -1,7 +1,13 @@
 <%= render 'shared/header' %>
 
-<% @result.each do |post| %>
-  <%= post.title %>
-<% end %>
+<div class="seek-index-main">
+
+  <% @result.each do |post| %>
+    <%= post.title %>
+  <% end %>
+
+</div>
+
+<%= render 'shared/side_bar' %>
 
 <%= render 'shared/footer' %>
