@@ -6,7 +6,7 @@ FactoryBot.define do
 
     title { Faker::Lorem.characters(number: 40) }
     content { Faker::Internet.password(max_length: 1000) }
-    category_id { Faker::Number.between(from: 1, to: 10) }
+    category_id { Faker::Number.between(from: 1, to: 16) }
     link { Faker::Internet.url }
 
     association :user
