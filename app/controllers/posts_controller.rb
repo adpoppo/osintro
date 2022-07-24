@@ -53,6 +53,14 @@ class PostsController < ApplicationController
     render json:{keyword: tag}
   end
   
+  def seek
+    if params[:q]&.dig(:title_or_content)
+      squished_keywords = params[:q][:title_or_content].squish
+      params[:q][:title_or_content_cont_any] = squished_keywords.split(/[[:blank:]]/)
+    end
+    @result = Post.ransack(params[:q]).result
+  end
+
   private
 
   def post_form_params

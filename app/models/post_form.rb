@@ -11,7 +11,7 @@ class PostForm
     validates :title, length: {maximum: 40}
     validates :content, length: {maximum: 1000}
   end
-  validates :category_id, numericality: { other_than: 0, message: "を入力してください" }
+  validates :category_id, numericality: { other_than: 0, message: "を選択してください" }
 
   def save
     post = Post.create(post_images: post_images, title: title, content: content, category_id: category_id, link: link, user_id: user_id)
