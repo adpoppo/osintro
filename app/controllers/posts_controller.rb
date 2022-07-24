@@ -53,6 +53,10 @@ class PostsController < ApplicationController
     render json:{keyword: tag}
   end
   
+  def seek
+    @result = Post.ransack(params[:q]).result
+  end
+
   private
 
   def post_form_params

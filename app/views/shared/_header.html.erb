@@ -1,6 +1,16 @@
 <header class="top-page-header">
   <h1 class="logo"><a href="/">Osintro</a></h1>
 
+  <div class="search-bar-contents">
+    <%= search_form_for Post.ransack(params[:q]), url: seek_posts_path, html: {id: 'search-form'} do |f|%>
+      <%= f.text_field :title_cont, placeholder: 'キーワードを入力', class: 'input-box' %>
+      <%= f.label :submit, class: 'search-button' do %>
+        <input type="submit" value="検索" class="send">
+        <%= f.submit :submit, id: "q_submit", style: "display: none;" %>
+      <% end %>
+    <% end %>
+  </div>
+
   <nav>
     <ul class="lists-right">
       <% if user_signed_in? %>
