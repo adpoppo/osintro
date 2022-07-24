@@ -54,9 +54,9 @@ class PostsController < ApplicationController
   end
   
   def seek
-    if params[:q]&.dig(:title)
-      squished_keywords = params[:q][:title].squish
-      params[:q][:title_cont_any] = squished_keywords.split(/[[:blank:]]/)
+    if params[:q]&.dig(:title_or_content)
+      squished_keywords = params[:q][:title_or_content].squish
+      params[:q][:title_or_content_cont_any] = squished_keywords.split(/[[:blank:]]/)
     end
     @result = Post.ransack(params[:q]).result
   end
