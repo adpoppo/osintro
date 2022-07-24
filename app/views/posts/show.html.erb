@@ -36,7 +36,7 @@
       </div>
 
       <div class="link-cord">
-        関連リンク：<%= @post.link %>
+        関連リンク：<%= text_url_to_link(h(@post.link)).html_safe %>
       </div>
     </div>
     <%# /投稿概要 %>
