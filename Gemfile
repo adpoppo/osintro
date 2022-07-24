@@ -64,3 +64,4 @@ gem 'kaminari'
 gem 'pry-rails'
 gem 'rails-i18n'
 gem 'ransack'
+gem 'aws-sdk-s3', require: false
